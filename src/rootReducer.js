@@ -17,7 +17,7 @@ const RootReducer = {
   transitions: {
     idle: {
       GET_DATA: async function() {
-        this.setStateTo("fetchData");
+        this.setStateTo("FETCH_DATA");
         try {
           const data = await fakeFetch();
           this.dispatch("success", data);
@@ -26,7 +26,7 @@ const RootReducer = {
         }
       }
     },
-    fetchData: {
+    FETCH_DATA: {
       success: function(data) {
         this.setStateTo("idle", data);
         return this.state.data;
